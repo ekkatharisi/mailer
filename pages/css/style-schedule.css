@@ -1,0 +1,75 @@
+body #main .schedule-choice
+{
+   text-align: center;
+}
+
+body #main .schedule-choice .form-check
+{
+   display: inline-block;
+   text-align: center;
+   margin : 30px 20px;
+}
+
+
+body #main .center-hour
+{
+    justify-content: center;
+    text-align : center;
+    align-items: center;
+    display: flex;
+}
+
+body #main .card-footer .icon-container
+{
+    height : 40px;
+    width : 40px;
+    border : 0px solid white;
+    border-radius: 50%;
+    background: white;
+    /*display: inline-block;*/
+    float : right;
+    margin : 0 7px;
+}
+body #main .card-footer .icon-container img
+{
+    cursor: pointer;
+}
+
+
+body #main .schedule-choice
+{
+   text-align: center;
+}
+
+body #main .schedule-choice .form-check
+{
+   display: inline-block;
+   text-align: center;
+   margin : 30px 20px;
+}
+
+body #main .card.email .card-body
+{
+   text-align : center;
+}
+
+body #main textarea#emailBody
+{
+   margin : 10px auto;
+   width: 95%;
+   height : 300px;
+}
+
+body #main input#emailTo , body #main input#emailSubject
+{
+   margin : 10px auto;
+   width : 95%;
+}
+
+body #main {
+   margin-bottom: 100px;
+}
+footer .nav-item
+{
+    margin : 0 20px;
+}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mailer</title>
+    <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker.standalone.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker3.standalone.min.css">
+    <link rel="stylesheet" href="./css/style-schedule.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">MAILER</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./index.html">HOME</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./schedule-table.html">schedule table</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">schedule your emails</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id='main'>
+        <div class="schedule-choice">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="choice-mode" id="now-choice" checked>now
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="choice-mode" id="intervals-of-date-choice">intervals
+                    of dates
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="choice-mode" id="fixed-date-choice">fixed dates
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div id="now" class="col-md-8 offset-md-2">
+                <div class="alert alert-dark" role="alert" style="width : 100%;">
+                    the emails writed hree gonna be sended directely after pressing send button !!!
+                </div>
+            </div>
+
+            <!-- intervals of date  -->
+            <div id="intervals-of-date" class="offset-md-2 col-md-8 hide">
+                <div class="card mb-3 schedule-mode">
+                    <div class="card-header text-white bg-dark">
+                        intervals of date
+                    </div>
+                    <div id="intervals-container" class="card-body">
+                        <!-- insert interval here -->
+                    </div>
+                    <div class="card-footer">
+                        <div id="add-interval" class="icon-container">
+                            <img class="img-fluid" src="../pages/img/add.png" alt="add interval">
+                        </div>
+                        <div id="remove-interval" class="icon-container">
+                            <img class="img-fluid" src="../pages/img/remove.png" alt="remove interval">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="fixed-dates" class="offset-md-2 col-md-8 hide">
+                <div class="card mb-3">
+                    <div class="card-header text-white bg-dark">
+                        fixed date
+                    </div>
+                    <div id="fixed-date-container" class="card-body">
+                        <!-- insert fixed date here -->
+                    </div>
+                    <div class="card-footer">
+                        <div id="add-fixed-date" class="icon-container">
+                            <img class="img-fluid" src="../pages/img/add.png" alt="add interval">
+                        </div>
+                        <div id="remove-fixed-date" class="icon-container">
+                            <img class="img-fluid" src="../pages/img/remove.png" alt="remove interval">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="emails" class="offset-md-1 col-md-10">
+            <div class="card mb-3">
+                <div class="card-header text-white bg-dark">
+                    emails
+                </div>
+                <div id="email-container" class="card-body">
+                    <!--insert email here-->
+                </div>
+                <div class="card-footer">
+                    <div id="add-email" class="icon-container">
+                        <img class="img-fluid" src="../pages/img/add.png" alt="add interval">
+                    </div>
+                    <div id="remove-email" class="icon-container">
+                        <img class="img-fluid" src="../pages/img/remove.png" alt="remove interval">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section id="hided-content" style="display: none;">
+        <div class="interval">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-3">
+                        <div class="card-header text-dark bg-light">
+                            <input type="checkbox" id="intervalcheck">&nbsp;&nbsp;<span>interval #</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="row center-hour">
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control date" placeholder="initial date">
+                                </div>
+                                <div class="col-md-2 ">
+                                    <select name="hour" class="hour">
+                                        <option value="0">--</option>
+                                    </select>
+                                    :
+                                    <select name="minute" class="minute">
+                                        <option value="0">--</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control date" placeholder="final date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fixed-date">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-3">
+                        <div class="card-header text-dark bg-light">
+                            <input type="checkbox" id="datecheck">&nbsp;&nbsp;<span>date #</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="row center-hour">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control date" placeholder="fixed date">
+                                </div>
+                                <div class="col-md-4 ">
+                                    <select class="hour">
+                                        <option value="0">0</option>
+                                    </select>
+                                    :
+                                    <select class="minute">
+                                        <option value="0">0</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="email">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-3 ">
+                        <div class="card-header text-dark bg-light" style="text-align: left;">
+                            <input type="checkbox" id="emailcheck">&nbsp;&nbsp;<span>email #</span>
+                        </div>
+                        <div class="card-body">
+                            <input id="emailTo" type="email" placeholder="to" />
+                            <input type="text" id="emailSubject" placeholder="subject" />
+                            <textarea id="emailBody" placeholder="your message here "></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-light">cancel</button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-success">save</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </footer>
+    <script src="./js/jquery-3.2.1.slim.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap-datepicker.min.js"></script>
+    <script src="./js/appSchedule.js"></script>
+</body>
+
+</html>

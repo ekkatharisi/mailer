@@ -1,0 +1,8 @@
+{
+    "auth_infos" : {
+        "email" : "ekkachaabaouiaymene@gmail.com",
+        "password" : "Likinpark+01101994"
+    },
+    "port" : 8080,
+    "api_prefix" : "/api/mailer"
+}
