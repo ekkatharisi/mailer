@@ -1,9 +1,10 @@
-const connect = require('../connect')
-const sequelize = require('sequelize');
+const db = require('../connect');
+const Sequelize = db.Sequelize;
+const sequelize = db.sequelize;
 
 function init()
 {
-    const UserRole = connect.db.define('user_role' , {});
+    const UserRole = sequelize.define('user_role' , {});
 
     return UserRole;
 }

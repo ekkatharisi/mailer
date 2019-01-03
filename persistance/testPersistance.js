@@ -6,7 +6,7 @@ const User = require('./models/user');
 const Date = require('./models/date');
 const File = require('./models/file');
 const UserRole = require('./models/userRole');
-const Password = require('./models/password');
+const Password = require('./models/account-type');
 const Role = require('./models/role');
 const Email = require('./models/email');
 

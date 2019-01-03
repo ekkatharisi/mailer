@@ -1,12 +1,13 @@
-const connect = require('../connect')
-const sequelize = require('sequelize');
-const Email = require('./email');
-const Task = require('./task');
-const User = require('./user');
+const db = require('../connect');
+const Sequelize = db.Sequelize;
+const sequelize = db.sequelize;
+
 
 function init()
 {
-    const Date = connect.db.define('date' , {
+
+    console.log(sequelize);
+    const Date = sequelize.define('date' , {
         id : {
             type : sequelize.DataTypes.BIGINT(5),
             allowNull : false,
@@ -31,10 +32,9 @@ function init()
     });
 
     Date.associate = function(models){
-        models.date.belongsToMany(models.Email , {through : Task});
-        models.date.belongsToMany(User , {through : Task});
+        Date.belongsToMany(models.email , {through : models.task});
+        Date.belongsToMany(models.user , {through : models.task});
     };
-
 
     return Date;
 }

@@ -1,9 +1,9 @@
-const connect = require('../connect')
-const sequelize = require('sequelize');
-const Email = require('./email')
+const db = require('../connect');
+const Sequelize = db.Sequelize;
+const sequelize = db.sequelize;
 
 function init(){
-    const File = connect.db.define('file' , {
+    const File = sequelize.define('file' , {
         id : {
             type : sequelize.DataTypes.BIGINT(5),
             allowNull : false,
@@ -16,8 +16,9 @@ function init(){
         }
     });
 
-    File.belongsTo(Email);
-
+    File.associate = function(models){
+        File.belongsTo(models.email);
+    };
     return File;
 }
 

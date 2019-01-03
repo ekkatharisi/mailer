@@ -1,13 +1,10 @@
-const connect = require('../connect')
-const sequelize = require('sequelize');
-const Task = require('./task');
-const User = require('./user');
-const Date = require('./date');
-const File = require('./file');
+const db = require('../connect');
+const Sequelize = db.Sequelize;
+const sequelize = db.sequelize;
 
 
-function init(){
-    const Email = connect.db.define('email' , {
+function init(sequelize){
+    const Email = sequelize.define('email' , {
         id : {
             type : sequelize.DataTypes.BIGINT(5),
             allowNull : false,
@@ -36,11 +33,15 @@ function init(){
         }
     });
 
-    Email.belongsToMany(User , {through : Task});
-    Email.belongsToMany(Date , {through : Task});
+    Email.associate = function(models){
+        Email.belongsToMany(models.user , {through : models.task});
+        Email.belongsToMany(models.date , {through : models.task});
+        Email.hasMany(models.file);
+    };
 
-    Email.hasMany(File);
+
+
     return Email;
 }
 
-module.exports = init();
+module.exports = init(sequelize);

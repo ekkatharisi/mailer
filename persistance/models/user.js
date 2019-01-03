@@ -1,14 +1,9 @@
-const connect = require('../connect')
-const sequelize = require('sequelize');
-const Email = require('./email');
-const Task = require('./task');
-const Date = require('./date');
-const Role = require('./role');
-const UserRole = require('./userRole');
-const Password = require('./password');
+const db = require('../connect');
+const Sequelize = db.Sequelize;
+const sequelize = db.sequelize;
 
 function init() {
-    const User = connect.db.define('user' , {
+    const User = sequelize.define('user' , {
         id : {
             type : sequelize.DataTypes.BIGINT(5),
             allowNull : false,
@@ -25,12 +20,16 @@ function init() {
         }
     });
 
-    User.belongsToMany(Email , {through : Task});
-    User.belongsToMany(Date , {through : Task});
+    User.associate = function(models){
 
-    User.belongsToMany(Role , {through : UserRole});
+        User.belongsToMany(models.email , {through : models.task});
+        User.belongsToMany(models.date , {through : models.task});
 
-    User.hasOne(Password);
+        User.belongsToMany(models.role , {through : models.user_role});
+
+        User.hasOne(models.password);
+    };
+
 
 
     return User;

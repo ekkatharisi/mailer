@@ -1,10 +1,9 @@
-const connect = require('../connect')
-const sequelize = require('sequelize');
-const User = require('./user');
-const UserRole = require('./userRole');
+const db = require('../connect');
+const Sequelize = db.Sequelize;
+const sequelize = db.sequelize;
 
 function init(){
-    const Role = connect.db.define('role' , {
+    const Role = sequelize.define('role' , {
         id : {
             type : sequelize.DataTypes.BIGINT(5),
             allowNull : false,
@@ -17,7 +16,11 @@ function init(){
         }
     });
 
-    Role.belongsToMany(User , {through : UserRole});
+    Role.associate = function(models){
+        Role.belongsToMany(models.user , {through : models.user_role});
+    };
+
+    return Role;
 }
 
 module.exports = init();

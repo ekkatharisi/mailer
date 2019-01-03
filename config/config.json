@@ -2,7 +2,7 @@
   "development": {
     "database": {
       "database_name": "test",
-      "user_name": "ekka",
+      "username": "ekka",
       "password": "ekka",
       "database_config" : {
         "host": "localhost",
