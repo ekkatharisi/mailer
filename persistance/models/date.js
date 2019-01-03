@@ -30,8 +30,11 @@ function init()
         }
     });
 
-    Date.belongsToMany(Email , {through : Task});
-    Date.belongsToMany(User , {through : Task});
+    Date.associate = function(models){
+        models.date.belongsToMany(models.Email , {through : Task});
+        models.date.belongsToMany(User , {through : Task});
+    };
+
 
     return Date;
 }

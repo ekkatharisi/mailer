@@ -1,8 +1,19 @@
 {
-    "auth_infos" : {
-        "email" : "ekkachaabaouiaymene@gmail.com",
-        "password" : "Likinpark+01101994"
+  "development": {
+    "database": {
+      "database_name": "test",
+      "user_name": "ekka",
+      "password": "ekka",
+      "database_config" : {
+        "host": "localhost",
+        "dialect": "mysql"
+      }
     },
-    "port" : 8080,
-    "api_prefix" : "/api/mailer"
+    "auth_infos": {
+      "email": "ekkachaabaouiaymene@gmail.com",
+      "password": "Likinpark+01101994"
+    },
+    "port": 8080,
+    "api_prefix": "/api/mailer"
+  }
 }
