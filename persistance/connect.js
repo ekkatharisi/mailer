@@ -12,24 +12,39 @@ var db = {
     Sequelize : Sequelize
 };
 
-fs.readdirSync("./models/").filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-}).forEach(file => {
-    var model = sequelize.import(path.join("./models", file));
-    db[model.name] = model;
-});
-
-Object.keys(db).forEach(modelName => {
-    if (db[modelName].associate) {
-        db[modelName].associate(db);
-    }
-});
-
-db.authenticate().then(() => {
+db.sequelize.authenticate().then(() => {
     console.log('database worked !!!');
+
+
+    fs.readdirSync(path.join(__dirname,'models/')).filter(file => {
+        return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+    }).forEach(file => {
+        var model = sequelize.import<(path.join(__dirname,"models/", file));
+        db[model.name] = model;
+    });
+
+    Object.keys(db).forEach(modelName => {
+        if (db[modelName].associate) {
+            db[modelName].associate(db);
+        }
+    });
+
+
+    db.sequelize.sync({force : true}).then(res => {
+        console.log('database created !!!!!!!!!');
+    }).catch(err => {
+        console.log(err.stack);
+    })
+
+
+
 }).catch(error => {
     console.log(error.stack);
 });
+
+
+
+
 
 
 module.exports = db;

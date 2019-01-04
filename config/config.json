@@ -2,8 +2,8 @@
   "development": {
     "database": {
       "database_name": "test",
-      "username": "ekka",
-      "password": "ekka",
+      "username": "root",
+      "password": "",
       "database_config" : {
         "host": "localhost",
         "dialect": "mysql"

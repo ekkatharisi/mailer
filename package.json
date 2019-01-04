@@ -4,8 +4,6 @@
   "description": "web application for automatic email sending",
   "main": "app.js",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
     "dateformat": "^3.0.3",
     "express": "^4.16.4",
     "mysql2": "^1.6.4",
