@@ -19,7 +19,8 @@ db.sequelize.authenticate().then(() => {
     fs.readdirSync(path.join(__dirname,'models/')).filter(file => {
         return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
     }).forEach(file => {
-        var model = sequelize.import(path.join(__dirname,"models/", file));
+        var model = db.sequelize.import(path.join(__dirname,"models/", file));
+        //var model = require(path.join(__dirname,"models/", file))(sequelize, Sequelize);
         db[model.name] = model;
     });
 
@@ -36,15 +37,8 @@ db.sequelize.authenticate().then(() => {
         console.log(err.stack);
     })
 
-
-
 }).catch(error => {
     console.log(error.stack);
 });
-
-
-
-
-
 
 module.exports = db;
